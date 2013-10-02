@@ -1,4 +1,10 @@
 RubygemsSubscriptions::Application.routes.draw do
+  resources :gems do
+    get 'last_changed' => 'gems#last_changed', on: :collection
+    get 'last_update' => 'gems#last_update', on: :collection
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +45,7 @@ RubygemsSubscriptions::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

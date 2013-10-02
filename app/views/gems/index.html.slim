@@ -1,0 +1,25 @@
+h2 Gems
+table
+  th id
+  th name
+  th version
+  th sync date
+  - @ruby_gems.each do |gem|
+    tr
+      td = gem.id
+      td = gem.name
+      td = gem.version
+      td = gem.sync_date
+hr
+= paginate @ruby_gems
+
+hr
+= link_to 'Last updated', last_update_gems_path, remote: true, class: 'update_button'
+br
+= link_to 'Last added', last_update_gems_path(last_add: true), class: 'update_button'
+#update_title
+/= @json_objects
+
+coffee:
+  $('.update_button').on 'click', ->
+    $('#update_title').html('Loading...')
