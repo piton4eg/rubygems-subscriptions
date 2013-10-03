@@ -1,3 +1,3 @@
-== RubyGems-Subscription
+# RubyGems-Subscription
 
 In progress...
