@@ -1,9 +1,8 @@
 RubygemsSubscriptions::Application.routes.draw do
-  resources :gems do
-    get 'last_changed' => 'gems#last_changed', on: :collection
-    get 'last_update' => 'gems#last_update', on: :collection
-  end
+  get 'updating' => 'gems#updating'
+  get 'download' => 'gems#download'
 
+  root 'gems#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -6,5 +6,6 @@ html
     = javascript_include_tag :application, "data-turbolinks-track" => true
     = csrf_meta_tags
 body
-  = link_to 'Gems', gems_path
-  = yield
+  = link_to 'Gems', root_path
+  #content
+    = yield

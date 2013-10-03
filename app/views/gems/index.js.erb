@@ -1,1 +1,5 @@
-$('#update_title').html('');
+$('#status_label').html('');
+$('#ruby_gems').html('<%= escape_javascript render partial: 'ruby_gem', collection: @ruby_gems %>');
+$('#paginator').html('<%= escape_javascript(paginate(@ruby_gems, :remote => true).to_s) %>');
+$('#update_link').html('<%= escape_javascript link_to 'Update', updating_path(params.merge(page: params[:page])), remote: true, class: 'update_button' %>');
+$('#download_links').html('<p>Download (from RubyGems):</p><%= link_to '50 last update', download_path(params.merge(page: params[:page])), remote: true, class: 'download_button' %><br><%= link_to '50 last add', download_path(params.merge(page: params[:page], last_add: true)), class: 'download_button'%>');

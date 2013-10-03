@@ -1,25 +1,25 @@
 h2 Gems
 table
-  th id
-  th name
-  th version
-  th sync date
-  - @ruby_gems.each do |gem|
+  thead
     tr
-      td = gem.id
-      td = gem.name
-      td = gem.version
-      td = gem.sync_date
+      th id
+      th name
+      th version
+      th sync date
+  tbody#ruby_gems
+    = render partial: 'ruby_gem', collection: @ruby_gems
 hr
-= paginate @ruby_gems
+#paginator
+  = paginate @ruby_gems, remote: true
 
 hr
-= link_to 'Last updated', last_update_gems_path, remote: true, class: 'update_button'
-br
-= link_to 'Last added', last_update_gems_path(last_add: true), class: 'update_button'
-#update_title
+#update_link
+  = link_to 'Update', updating_path(params.merge(page: params[:page])), remote: true, class: 'update_button'
+hr
+#download_links
+  p Download (from RubyGems):
+  = link_to '50 last update', download_path, remote: true, class: 'download_button'
+  br
+  = link_to '50 last add', download_path(last_add: true), class: 'download_button'
+#status_label
 /= @json_objects
-
-coffee:
-  $('.update_button').on 'click', ->
-    $('#update_title').html('Loading...')
