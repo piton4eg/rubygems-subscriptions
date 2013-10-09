@@ -27,3 +27,5 @@ gem 'kaminari', '~> 0.14.1'
 group :doc do
   gem 'sdoc', '~> 0.3.20', require: false
 end
+
+gem 'sidekiq', '~> 2.15.1'

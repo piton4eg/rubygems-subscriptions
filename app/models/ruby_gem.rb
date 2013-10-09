@@ -23,4 +23,13 @@ class RubyGem < ActiveRecord::Base
     response = Net::HTTP.get_response(uri)
     return response.code.to_i == 200
   end
+
+  def update_if_response_uri
+    if response_uri?
+      json = JSON.parse(open(gem_uri).read)
+      update_if_change(json['version'], Date.today)
+    else
+      delete
+    end
+  end
 end

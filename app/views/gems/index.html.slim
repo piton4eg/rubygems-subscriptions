@@ -1,4 +1,4 @@
-h2 Gems
+h2 = link_to 'Gems', root_path
 table
   thead
     tr
@@ -13,6 +13,7 @@ hr
   = paginate @ruby_gems, remote: true
 
 hr
+p If you want update all gems in base, please click this link one(!) time for start this job.
 #update_link
   = link_to 'Update', updating_path(params.merge(page: params[:page])), remote: true, class: 'update_button'
 hr
